@@ -6,9 +6,9 @@
 %define		pdir	PerlIO
 %define		pnam	utf8_strict
 Summary:	PerlIO::utf8_strict - Fast and correct UTF-8 IO
-Name:		perl-PerlIO-eol
+Name:		perl-%{pdir}-%{pnam}
 Version:	0.005
-Release:	1
+Release:	2
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
