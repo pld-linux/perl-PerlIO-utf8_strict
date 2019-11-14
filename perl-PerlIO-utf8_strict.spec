@@ -7,13 +7,13 @@
 %define		pnam	utf8_strict
 Summary:	PerlIO::utf8_strict - Fast and correct UTF-8 IO
 Name:		perl-%{pdir}-%{pnam}
-Version:	0.005
-Release:	7
+Version:	0.007
+Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/PerlIO/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	6b971926fa3dbd2af494753004a279a0
+# Source0-md5:	9e8fba7f15c612c4f2ed2f961bf1141b
 URL:		http://search.cpan.org/dist/PerlIO-utf8_strict/
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
@@ -27,20 +27,17 @@ Unlike perl's default :utf8 layer it checks the input for correctness.
 %setup -q -n %{pdir}-%{pnam}-%{version}
 
 %build
-%{__perl} Build.PL \
-	destdir=$RPM_BUILD_ROOT \
-	installdirs=vendor
+%{__perl} Makefile.PL \
+        INSTALLDIRS=vendor
+%{__make}
 
-./Build \
-	CC="%{__cc}" \
-	OPTIMIZE="%{rpmcflags}"
-
-%{?with_tests:./Build test}
+%{?with_tests:%{__make} test}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-./Build install
+%{__make} install \
+        DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
