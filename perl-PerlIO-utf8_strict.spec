@@ -2,7 +2,6 @@
 # Conditional build:
 %bcond_without	tests	# do not perform "make test"
 #
-%include	/usr/lib/rpm/macros.perl
 %define		pdir	PerlIO
 %define		pnam	utf8_strict
 Summary:	PerlIO::utf8_strict - Fast and correct UTF-8 IO
