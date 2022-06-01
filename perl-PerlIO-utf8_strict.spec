@@ -4,23 +4,34 @@
 #
 %define		pdir	PerlIO
 %define		pnam	utf8_strict
-Summary:	PerlIO::utf8_strict - Fast and correct UTF-8 IO
+Summary:	PerlIO::utf8_strict - fast and correct UTF-8 I/O
+Summary(pl.UTF-8):	PerlIO::utf8_strict - szybkie i poprawne we/wy UTF-8
 Name:		perl-%{pdir}-%{pnam}
-Version:	0.007
-Release:	4
+Version:	0.009
+Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/PerlIO/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	9e8fba7f15c612c4f2ed2f961bf1141b
-URL:		http://search.cpan.org/dist/PerlIO-utf8_strict/
+# Source0-md5:	54811ae16ff5f1cbc50d0cfe88b2c372
+URL:		https://metacpan.org/dist/PerlIO-utf8_strict
+%if %{with tests}
+BuildRequires:	perl-Test-Exception
+BuildRequires:	perl-Test-Simple >= 0.88
+%endif
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
+BuildRequires:	rpmbuild(macros) >= 1.745
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-This module provides a fast and correct UTF-8 PerlIO layer.
-Unlike perl's default :utf8 layer it checks the input for correctness.
+This module provides a fast and correct UTF-8 PerlIO layer. Unlike
+Perl's default :utf8 layer it checks the input for correctness.
+
+%description -l pl.UTF-8
+Ten moduł zapewnia warstwę PerlIO do szybkiego i poprawnego UTF-8. W
+przeciwieństwie do domyślnej warstwy :utf8 Perla, sprawdza wejście pod
+kątem poprawności.
 
 %prep
 %setup -q -n %{pdir}-%{pnam}-%{version}
@@ -43,8 +54,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc Changes
+%doc Changes README
 %{perl_vendorarch}/PerlIO/utf8_strict.pm
 %dir %{perl_vendorarch}/auto/PerlIO/utf8_strict
-%attr(755,root,root) %{perl_vendorarch}/auto/PerlIO/utf8_strict/*.so
-%{_mandir}/man3/*
+%attr(755,root,root) %{perl_vendorarch}/auto/PerlIO/utf8_strict/utf8_strict.so
+%{_mandir}/man3/PerlIO::utf8_strict.3pm*
