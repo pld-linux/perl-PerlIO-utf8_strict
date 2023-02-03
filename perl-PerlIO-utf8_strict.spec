@@ -1,19 +1,19 @@
 #
 # Conditional build:
-%bcond_without	tests	# do not perform "make test"
+%bcond_without	tests	# unit tests
 #
 %define		pdir	PerlIO
 %define		pnam	utf8_strict
 Summary:	PerlIO::utf8_strict - fast and correct UTF-8 I/O
 Summary(pl.UTF-8):	PerlIO::utf8_strict - szybkie i poprawne we/wy UTF-8
 Name:		perl-%{pdir}-%{pnam}
-Version:	0.009
-Release:	2
+Version:	0.010
+Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
-Source0:	http://www.cpan.org/modules/by-module/PerlIO/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	54811ae16ff5f1cbc50d0cfe88b2c372
+Source0:	https://www.cpan.org/modules/by-module/PerlIO/%{pdir}-%{pnam}-%{version}.tar.gz
+# Source0-md5:	d90ca967f66e05ad9221c79060868346
 URL:		https://metacpan.org/dist/PerlIO-utf8_strict
 %if %{with tests}
 BuildRequires:	perl-Test-Exception
