@@ -8,7 +8,7 @@ Summary:	PerlIO::utf8_strict - fast and correct UTF-8 I/O
 Summary(pl.UTF-8):	PerlIO::utf8_strict - szybkie i poprawne we/wy UTF-8
 Name:		perl-%{pdir}-%{pnam}
 Version:	0.010
-Release:	3
+Release:	4
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
